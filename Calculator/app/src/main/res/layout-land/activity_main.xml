@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/text_expression"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:gravity="bottom|end"
+            android:textSize="30sp"
+            tools:text="2+2" />
+
+        <TextView
+            android:id="@+id/text_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="30sp"
+            android:text="@string/result_panel_text" />
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="8"
+        android:rowCount="5"
+        android:rowOrderPreserved="false">
+
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_sqrt" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_factorial" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_bracket1" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_bracket2" />
+
+        <Button
+            android:id="@+id/button_clear"
+            style="@style/CharacterButton"
+            android:text="@string/button_clear" />
+
+        <Button
+            android:id="@+id/button_backspace"
+            style="@style/CharacterButton"
+            android:text="@string/button_backspace" />
+
+        <Button
+            android:id="@+id/button_percent"
+            style="@style/CharacterButton"
+            android:text="@string/button_percent" />
+
+        <Button
+            android:id="@+id/button_divide"
+            style="@style/CharacterButton"
+            android:text="@string/button_divide" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_ln" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_lg" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_e" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_pi" />
+
+        <Button
+            android:id="@+id/button_seven"
+            style="@style/CharacterButton"
+            android:text="@string/button_seven" />
+
+        <Button
+            android:id="@+id/button_eight"
+            style="@style/CharacterButton"
+            android:text="@string/button_eight" />
+
+        <Button
+            android:id="@+id/button_nine"
+            style="@style/CharacterButton"
+            android:text="@string/button_nine" />
+
+        <Button
+            android:id="@+id/button_multiply"
+            style="@style/CharacterButton"
+            android:text="@string/button_multiply" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_power" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_reverse" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_power_two" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_power_three" />
+
+        <Button
+            android:id="@+id/button_four"
+            style="@style/CharacterButton"
+            android:text="@string/button_four" />
+
+        <Button
+            android:id="@+id/button_five"
+            style="@style/CharacterButton"
+            android:text="@string/button_five" />
+
+        <Button
+            android:id="@+id/button_six"
+            style="@style/CharacterButton"
+            android:text="@string/button_six" />
+
+        <Button
+            android:id="@+id/button_subtract"
+            style="@style/CharacterButton"
+            android:text="@string/button_subtract" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_sin" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_cos" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_tan" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_cot" />
+
+        <Button
+            android:id="@+id/button_one"
+            style="@style/CharacterButton"
+            android:text="@string/button_one" />
+
+        <Button
+            android:id="@+id/button_two"
+            style="@style/CharacterButton"
+            android:text="@string/button_two" />
+
+        <Button
+            android:id="@+id/button_three"
+            style="@style/CharacterButton"
+            android:text="@string/button_three" />
+
+        <Button
+            android:id="@+id/button_add"
+            style="@style/CharacterButton"
+            android:text="@string/button_add" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_asin" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_acos" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_atan" />
+
+        <Button
+            style="@style/CharacterButton"
+            android:text="@string/button_acot" />
+
+        <Button
+            android:id="@+id/button_change"
+            style="@style/CharacterButton"
+            android:text="@string/button_zero" />
+
+        <Button
+            android:id="@+id/button_zero"
+            style="@style/CharacterButton"
+            android:text="@string/button_two_zeros" />
+
+        <Button
+            android:id="@+id/button_comma"
+            style="@style/CharacterButton"
+            android:text="@string/button_comma" />
+
+        <Button
+            android:id="@+id/button_result"
+            style="@style/CharacterButton"
+            android:text="@string/button_result" />
+
+    </GridLayout>
+
+</LinearLayout>
