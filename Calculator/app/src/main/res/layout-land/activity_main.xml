@@ -42,55 +42,63 @@
 
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_sqrt"
+            style="@style/ComplexActionButton"
             android:text="@string/button_sqrt" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_factorial"
+            style="@style/ComplexActionButton"
             android:text="@string/button_factorial" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_bracket1"
+            style="@style/ComplexActionButton"
             android:text="@string/button_bracket1" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_bracket2"
+            style="@style/ComplexActionButton"
             android:text="@string/button_bracket2" />
 
         <Button
             android:id="@+id/button_clear"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_clear" />
 
         <Button
             android:id="@+id/button_backspace"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_backspace" />
 
         <Button
             android:id="@+id/button_percent"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_percent" />
 
         <Button
             android:id="@+id/button_divide"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_divide" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_ln"
+            style="@style/ComplexActionButton"
             android:text="@string/button_ln" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_lg"
+            style="@style/ComplexActionButton"
             android:text="@string/button_lg" />
 
         <Button
-            style="@style/CharacterButton"
-            android:text="@string/button_e" />
+            android:id="@+id/button_abs"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_abs" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_pi"
+            style="@style/ComplexActionButton"
             android:text="@string/button_pi" />
 
         <Button
@@ -110,23 +118,27 @@
 
         <Button
             android:id="@+id/button_multiply"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_multiply" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_power"
+            style="@style/ComplexActionButton"
             android:text="@string/button_power" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_reverse"
+            style="@style/ComplexActionButton"
             android:text="@string/button_reverse" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_power_two"
+            style="@style/ComplexActionButton"
             android:text="@string/button_power_two" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_power_three"
+            style="@style/ComplexActionButton"
             android:text="@string/button_power_three" />
 
         <Button
@@ -146,23 +158,27 @@
 
         <Button
             android:id="@+id/button_subtract"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_subtract" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_sin"
+            style="@style/ComplexActionButton"
             android:text="@string/button_sin" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_cos"
+            style="@style/ComplexActionButton"
             android:text="@string/button_cos" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_tan"
+            style="@style/ComplexActionButton"
             android:text="@string/button_tan" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_cot"
+            style="@style/ComplexActionButton"
             android:text="@string/button_cot" />
 
         <Button
@@ -182,34 +198,38 @@
 
         <Button
             android:id="@+id/button_add"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_add" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_asin"
+            style="@style/ComplexActionButton"
             android:text="@string/button_asin" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_acos"
+            style="@style/ComplexActionButton"
             android:text="@string/button_acos" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_atan"
+            style="@style/ComplexActionButton"
             android:text="@string/button_atan" />
 
         <Button
-            style="@style/CharacterButton"
+            android:id="@+id/button_acot"
+            style="@style/ComplexActionButton"
             android:text="@string/button_acot" />
 
         <Button
-            android:id="@+id/button_change"
+            android:id="@+id/button_e"
             style="@style/CharacterButton"
-            android:text="@string/button_zero" />
+            android:text="@string/button_e" />
 
         <Button
             android:id="@+id/button_zero"
             style="@style/CharacterButton"
-            android:text="@string/button_two_zeros" />
+            android:text="@string/button_zero" />
 
         <Button
             android:id="@+id/button_comma"
@@ -218,7 +238,7 @@
 
         <Button
             android:id="@+id/button_result"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_result" />
 
     </GridLayout>

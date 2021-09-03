@@ -43,5 +43,5 @@
     <string name="button_pi">π</string>
     <string name="button_e">e</string>
     <string name="button_second">2nd</string>
-    <string name="button_two_zeros">00</string>
+    <string name="button_abs">abs</string>
 </resources>

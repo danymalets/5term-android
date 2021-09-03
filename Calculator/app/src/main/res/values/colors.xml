@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="button">#FFC107</color>
+    <color name="character_button">#FFC107</color>
+    <color name="simple_action_button">#FF5722</color>
+    <color name="complex_action_button">#327B9C</color>
 </resources>

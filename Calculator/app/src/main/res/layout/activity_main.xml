@@ -41,23 +41,23 @@
 
         <Button
             android:id="@+id/button_clear"
-            style="@style/CharacterButton"
+            style="@style/SimpleActionButton"
             android:text="@string/button_clear" />
 
         <Button
             android:id="@+id/button_backspace"
             android:text="@string/button_backspace"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
         <Button
             android:id="@+id/button_percent"
             android:text="@string/button_percent"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
         <Button
             android:id="@+id/button_divide"
             android:text="@string/button_divide"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
         <Button
             android:id="@+id/button_seven"
@@ -77,7 +77,7 @@
         <Button
             android:id="@+id/button_multiply"
             android:text="@string/button_multiply"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
         <Button
             android:id="@+id/button_four"
@@ -97,7 +97,7 @@
         <Button
             android:id="@+id/button_subtract"
             android:text="@string/button_subtract"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
         <Button
             android:id="@+id/button_one"
@@ -117,12 +117,12 @@
         <Button
             android:id="@+id/button_add"
             android:text="@string/button_add"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
         <Button
             android:id="@+id/button_change"
             android:text="@string/button_change"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
         <Button
             android:id="@+id/button_zero"
@@ -137,7 +137,7 @@
         <Button
             android:id="@+id/button_result"
             android:text="@string/button_result"
-            style="@style/CharacterButton"/>
+            style="@style/SimpleActionButton"/>
 
     </GridLayout>
 
