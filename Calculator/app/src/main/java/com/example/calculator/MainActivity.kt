@@ -90,8 +90,19 @@ class MainActivity : AppCompatActivity() {
         binding.textExpression.text = expression.getBeautyExpression()
         val expressionResult = expression.getResult()
         if (expressionResult.isValid) {
-
-            binding.textResult.text = "=" + expressionResult.value.toBeautyString().replace('.', ',')
+            if (expressionResult.value.isNaN()){
+                binding.textResult.text = if (hard) "Math error" else ""
+            }
+            else if (expressionResult.value == Double.POSITIVE_INFINITY){
+                binding.textResult.text = "∞"
+            }
+            else if (expressionResult.value == Double.NEGATIVE_INFINITY){
+                binding.textResult.text = "-∞"
+            }
+            else {
+                binding.textResult.text =
+                    "=" + expressionResult.value.toBeautyString().replace('.', ',')
+            }
         }
         else{
             binding.textResult.text = if (hard) "Syntax error" else ""

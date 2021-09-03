@@ -48,20 +48,32 @@ class Expression {
             lastNumber = newContent.last().getInternalString() + lastNumber
             newContent.removeLast()
         }
-        var expressionString: String = ""
+        if (lastNumber == ""){
+            return
+        }
+        var expressionString = ""
+        var lastSign: Char = '?'
         for (expressionPart in newContent) {
             if (expressionPart != newContent.last() || expressionPart !is OperationSign) {
                 expressionString += expressionPart.getInternalString()
             }
+            else{
+                lastSign = newContent.last().getInternalString()[0]
+            }
         }
         var expressionResult = getResult(expressionString)
-        if (expressionResult.isValid && expressionResult.value.isFinite()){
-            var newLastNumber = (expressionResult.value * lastNumber.toDouble() / 100).toBeautyString()
-            for (numberCharacter in newLastNumber){
-                newContent.add(NumberPart(numberCharacter.toString()))
-            }
-            content = newContent
+        var newLastNumber: String
+        if ((lastSign == '+' || lastSign == '-') && expressionResult.isValid && expressionResult.value.isFinite()){
+            newLastNumber = (expressionResult.value * lastNumber.toDouble() / 100).toBeautyString()
         }
+        else{
+            newLastNumber = (lastNumber.toDouble() / 100).toBeautyString()
+        }
+
+        for (numberCharacter in newLastNumber){
+            newContent.add(NumberPart(numberCharacter.toString()))
+        }
+        content = newContent
     }
 
     fun getResult(): ExpressionResult {
