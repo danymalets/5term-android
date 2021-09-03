@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.calculator.databinding.ActivityMainBinding
 import com.example.calculator.expression.Expression
+import com.example.calculator.extentions.toBeautyString
 import com.example.calculator.expression_part.*
 
 
@@ -90,18 +91,10 @@ class MainActivity : AppCompatActivity() {
         val expressionResult = expression.getResult()
         if (expressionResult.isValid) {
 
-            binding.textResult.text = expressionResult.value.toBeautyString()
+            binding.textResult.text = "=" + expressionResult.value.toBeautyString().replace('.', ',')
         }
         else{
             binding.textResult.text = if (hard) "Syntax error" else ""
         }
     }
-}
-
-private fun Double.toBeautyString(): String {
-    val long  = this.toLong()
-    return if (this == long.toDouble())
-        String.format("%d", this.toLong());
-    else
-        String.format("%s", this);
 }

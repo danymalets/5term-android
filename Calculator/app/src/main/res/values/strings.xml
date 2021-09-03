@@ -33,7 +33,6 @@
     <string name="button_reverse">^(-1)</string>
     <string name="button_power_two">^2</string>
     <string name="button_power_three">^3</string>
-    <string name="button_log">log</string>
     <string name="button_lg">lg</string>
     <string name="button_ln">ln</string>
     <string name="button_bracket1">(</string>
@@ -42,6 +41,5 @@
     <string name="button_factorial">!</string>
     <string name="button_pi">π</string>
     <string name="button_e">e</string>
-    <string name="button_second">2nd</string>
-    <string name="button_abs">abs</string>
+    <string name="button_abs">|x|</string>
 </resources>
