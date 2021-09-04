@@ -31,6 +31,16 @@ class Expression {
             return
         }
 
+        if (newExpressionPart.getInternalString() == ".") {
+            var i = content.size - 1
+            while (content[i] is NumberPart){
+                if (content[i].getInternalString() == "."){
+                    return
+                }
+                i--
+            }
+        }
+
         if (newExpressionPart is NumberPart && newExpressionPart.getInternalString() != "."
             && content.lastOrNull() is NumberPart && content.last().getInternalString() == "0"
             && (content.size == 1 || content[content.size - 2] !is NumberPart)) content.removeLast()
