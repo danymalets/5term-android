@@ -14,6 +14,7 @@ class Expression {
 
     fun getBeautyExpression(): String {
         var expression = ""
+
         for (expressionPart in content){
             expression += expressionPart.getBeautyContent()
         }
@@ -23,6 +24,10 @@ class Expression {
     fun append(newExpressionPart: ExpressionPart){
         if (newExpressionPart is OperationSign && content.lastOrNull() is OperationSign){
             content[content.size - 1] = newExpressionPart
+            return
+        }
+
+        if (newExpressionPart.getInternalString() == "." && content.lastOrNull() !is NumberPart){
             return
         }
 
@@ -42,7 +47,7 @@ class Expression {
     }
 
     fun percent() {
-        var newContent = content.toMutableList()
+        val newContent = content.toMutableList()
         var lastNumber = ""
         while (newContent.lastOrNull() is NumberPart){
             lastNumber = newContent.last().getInternalString() + lastNumber
@@ -51,35 +56,43 @@ class Expression {
         if (lastNumber == ""){
             return
         }
-        var expressionString = ""
-        var lastSign: Char = '?'
-        for (expressionPart in newContent) {
-            if (expressionPart != newContent.last() || expressionPart !is OperationSign) {
-                expressionString += expressionPart.getInternalString()
-            }
-            else{
-                lastSign = newContent.last().getInternalString()[0]
-            }
-        }
-        var expressionResult = getResult(expressionString)
-        var newLastNumber: String
-        if ((lastSign == '+' || lastSign == '-') && expressionResult.isValid && expressionResult.value.isFinite()){
-            newLastNumber = (expressionResult.value * lastNumber.toDouble() / 100).toBeautyString()
-        }
-        else{
-            newLastNumber = (lastNumber.toDouble() / 100).toBeautyString()
+        val expressionResult = getResult(newContent)
+        val newLastNumber: String
+
+        val expressionPercentage = newContent.size > 1 && (newContent.last().getInternalString() in "-+")
+
+        newLastNumber = if (expressionPercentage && expressionResult.isValid && expressionResult.value.isFinite()){
+            (expressionResult.value * lastNumber.toDouble() / 100).toBeautyString()
+        } else{
+            (lastNumber.toDouble() / 100).toBeautyString()
         }
 
         for (numberCharacter in newLastNumber){
-            newContent.add(NumberPart(numberCharacter.toString()))
+            when (numberCharacter){
+                '-' -> {
+                    if (newContent.size == 0 || newContent.last().getInternalString() !in "-+"){
+                        throw UnsupportedOperationException()
+                    }
+                    when (newContent.last().getInternalString()){
+                        "-" -> newContent[newContent.size - 1] = OperationSign("+")
+                        "+" -> newContent[newContent.size - 1] = OperationSign("-")
+                    }
+                }
+                '.' -> newContent.add(NumberPart(",", "."))
+                else -> newContent.add(NumberPart(numberCharacter.toString()))
+            }
         }
         content = newContent
     }
 
     fun getResult(): ExpressionResult {
-        var expressionString: String = ""
-        for (expressionPart in content) {
-            if (expressionPart != content.last() || expressionPart !is OperationSign) {
+        return getResult(content)
+    }
+
+    private fun getResult(expression: MutableList<ExpressionPart>): ExpressionResult{
+        var expressionString = ""
+        for (expressionPart in expression) {
+            if (expressionPart != expression.last() || expressionPart !is OperationSign) {
                 expressionString += expressionPart.getInternalString()
             }
         }
@@ -95,11 +108,6 @@ class Expression {
         }
         if (depth > 0)
             expressionString += ")".repeat(depth)
-        return getResult(expressionString)
-
-    }
-
-    private fun getResult(expressionString: String): ExpressionResult{
         val parserExpression = ParserExpression(expressionString, lg)
         val result = parserExpression.calculate()
         val isValid = parserExpression.checkLexSyntax()
