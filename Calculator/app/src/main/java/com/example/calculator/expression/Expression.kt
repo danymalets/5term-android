@@ -1,5 +1,6 @@
 package com.example.calculator.expression
 
+import android.util.Log
 import com.example.calculator.expression_part.ExpressionPart
 import com.example.calculator.expression_part.NumberPart
 import com.example.calculator.expression_part.OperationSign
@@ -33,7 +34,7 @@ class Expression {
 
         if (newExpressionPart.getInternalString() == ".") {
             var i = content.size - 1
-            while (content[i] is NumberPart){
+            while (i >= 0 && content[i] is NumberPart){
                 if (content[i].getInternalString() == "."){
                     return
                 }
@@ -76,7 +77,7 @@ class Expression {
         } else{
             (lastNumber.toDouble() / 100).toBeautyString()
         }
-
+        Log.d("nln", newLastNumber)
         for (numberCharacter in newLastNumber){
             when (numberCharacter){
                 '-' -> {
