@@ -1,9 +1,10 @@
 package com.example.calculator
 
+import com.example.calculator.databinding.ActivityMainBinding
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.calculator.databinding.ActivityMainBinding
+import android.view.View
 import com.example.calculator.expression.Expression
 import com.example.calculator.extentions.toBeautyString
 import com.example.calculator.expression_part.*
@@ -12,70 +13,83 @@ import com.example.calculator.expression_part.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private var expression: Expression = Expression()
+    companion object {
+        private var expression: Expression = Expression()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 
-        binding.buttonZero.setOnClickListener { appendToExpression(NumberPart("0")) }
-        binding.buttonOne.setOnClickListener { appendToExpression(NumberPart("1")) }
-        binding.buttonTwo.setOnClickListener { appendToExpression(NumberPart("2")) }
-        binding.buttonThree.setOnClickListener { appendToExpression(NumberPart("3")) }
-        binding.buttonFour.setOnClickListener { appendToExpression(NumberPart("4")) }
-        binding.buttonFive.setOnClickListener { appendToExpression(NumberPart("5")) }
-        binding.buttonSix.setOnClickListener { appendToExpression(NumberPart("6")) }
-        binding.buttonSeven.setOnClickListener { appendToExpression(NumberPart("7")) }
-        binding.buttonEight.setOnClickListener { appendToExpression(NumberPart("8")) }
-        binding.buttonNine.setOnClickListener { appendToExpression(NumberPart("9")) }
+    fun onButtonClick(view: View?) {
+        when(view?.id){
+            R.id.button_zero -> appendToExpression(NumberPart("0"))
+            R.id.button_one -> appendToExpression(NumberPart("1"))
+            R.id.button_two -> appendToExpression(NumberPart("2"))
+            R.id.button_three -> appendToExpression(NumberPart("3"))
+            R.id.button_four -> appendToExpression(NumberPart("4"))
+            R.id.button_five -> appendToExpression(NumberPart("5"))
+            R.id.button_six -> appendToExpression(NumberPart("6"))
+            R.id.button_seven -> appendToExpression(NumberPart("7"))
+            R.id.button_eight -> appendToExpression(NumberPart("8"))
+            R.id.button_nine -> appendToExpression(NumberPart("9"))
 
-        binding.buttonComma.setOnClickListener { appendToExpression(NumberPart(",", ".")) }
+            R.id.button_comma -> appendToExpression(NumberPart(",", "."))
 
-        binding.buttonAdd.setOnClickListener { appendToExpression(OperationSign("+")) }
-        binding.buttonSubtract.setOnClickListener { appendToExpression(OperationSign("-")) }
-        binding.buttonMultiply.setOnClickListener { appendToExpression(OperationSign("×","*")) }
-        binding.buttonDivide.setOnClickListener { appendToExpression(OperationSign("÷", "/")) }
+            R.id.button_add -> appendToExpression(OperationSign("+"))
+            R.id.button_subtract -> appendToExpression(OperationSign("-"))
+            R.id.button_multiply -> appendToExpression(OperationSign("×","*"))
+            R.id.button_divide -> appendToExpression(OperationSign("÷", "/"))
 
-        binding.buttonSqrt?.setOnClickListener { appendToExpression(ComplexOperation("sqrt(")) }
-        binding.buttonFactorial?.setOnClickListener { appendToExpression(ComplexOperation("!")) }
-        binding.buttonBracket1?.setOnClickListener { appendToExpression(ComplexOperation("(")) }
-        binding.buttonBracket2?.setOnClickListener { appendToExpression(ComplexOperation(")")) }
-        binding.buttonLn?.setOnClickListener { appendToExpression(ComplexOperation("ln(")) }
-        binding.buttonLg?.setOnClickListener { appendToExpression(ComplexOperation("lg(")) }
-        binding.buttonAbs?.setOnClickListener { appendToExpression(ComplexOperation("abs(")) }
-        binding.buttonPi?.setOnClickListener { appendToExpression(ComplexOperation("π", "pi")) }
-        binding.buttonPower?.setOnClickListener { appendToExpression(ComplexOperation("^")) }
-        binding.buttonReverse?.setOnClickListener { appendToExpression(ComplexOperation("^(-1)")) }
-        binding.buttonPowerTwo?.setOnClickListener { appendToExpression(ComplexOperation("^2")) }
-        binding.buttonPowerThree?.setOnClickListener { appendToExpression(ComplexOperation("^3")) }
-        binding.buttonSin?.setOnClickListener { appendToExpression(ComplexOperation("sin(")) }
-        binding.buttonCos?.setOnClickListener { appendToExpression(ComplexOperation("cos(")) }
-        binding.buttonTan?.setOnClickListener { appendToExpression(ComplexOperation("tan(")) }
-        binding.buttonCot?.setOnClickListener { appendToExpression(ComplexOperation("cot(")) }
-        binding.buttonAsin?.setOnClickListener { appendToExpression(ComplexOperation("arcsin(")) }
-        binding.buttonAcos?.setOnClickListener { appendToExpression(ComplexOperation("arccos(")) }
-        binding.buttonAtan?.setOnClickListener { appendToExpression(ComplexOperation("arctan(")) }
-        binding.buttonAcot?.setOnClickListener { appendToExpression(ComplexOperation("arccot(")) }
+            R.id.button_sqrt -> appendToExpression(ComplexOperation("√(", "sqrt("))
+            R.id.button_factorial -> appendToExpression(ComplexOperation("!"))
+            R.id.button_bracket1 -> appendToExpression(ComplexOperation("("))
+            R.id.button_bracket2 -> appendToExpression(ComplexOperation(")"))
+            R.id.button_ln -> appendToExpression(ComplexOperation("ln("))
+            R.id.button_lg -> appendToExpression(ComplexOperation("lg("))
+            R.id.button_abs -> appendToExpression(ComplexOperation("abs("))
+            R.id.button_pi -> appendToExpression(ComplexOperation("π", "pi"))
+            R.id.button_power -> appendToExpression(ComplexOperation("^"))
+            R.id.button_reverse -> appendToExpression(ComplexOperation("^(-1)"))
+            R.id.button_power_two -> appendToExpression(ComplexOperation("^2"))
+            R.id.button_power_three -> appendToExpression(ComplexOperation("^3"))
+            R.id.button_sin -> appendToExpression(ComplexOperation("sin("))
+            R.id.button_cos -> appendToExpression(ComplexOperation("cos("))
+            R.id.button_tan -> appendToExpression(ComplexOperation("tan("))
+            R.id.button_cot -> appendToExpression(ComplexOperation("cot("))
+            R.id.button_asin -> appendToExpression(ComplexOperation("arcsin("))
+            R.id.button_acos -> appendToExpression(ComplexOperation("arccos("))
+            R.id.button_atan -> appendToExpression(ComplexOperation("arctan("))
+            R.id.button_acot -> appendToExpression(ComplexOperation("arccot("))
+            R.id.button_e -> appendToExpression(ComplexOperation("e"))
 
-        binding.buttonE?.setOnClickListener { appendToExpression(ComplexOperation("e")) }
+            R.id.button_clear -> {
+                expression.clear()
+                updateExpressionField()
+            }
+            R.id.button_backspace -> {
+                expression.backspace()
+                updateExpressionField()
+            }
+            R.id.button_percent -> {
+                expression.percent()
+                updateExpressionField()
+            }
+            R.id.button_result -> {
+                updateExpressionField(true)
+            }
 
-        binding.buttonClear.setOnClickListener {
-            expression.clear()
-            updateExpressionField()
-        }
-        binding.buttonBackspace.setOnClickListener {
-            expression.backspace()
-            updateExpressionField()
-        }
-
-        binding.buttonPercent.setOnClickListener {
-            expression.percent()
-            updateExpressionField()
-        }
-
-        binding.buttonResult.setOnClickListener{
-            updateExpressionField(true)
+            R.id.button_change -> {
+                val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment)
+                if (currentFragment is SpecificButtonsFragment)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, BasicButtonsFragment()).commit()
+                else
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, SpecificButtonsFragment()).commit()
+            }
         }
     }
 
@@ -90,18 +104,19 @@ class MainActivity : AppCompatActivity() {
         binding.textExpression.text = expression.getBeautyExpression()
         val expressionResult = expression.getResult()
         if (expressionResult.isValid) {
-            if (expressionResult.value.isNaN()){
-                binding.textResult.text = if (hard) "Math error" else ""
-            }
-            else if (expressionResult.value == Double.POSITIVE_INFINITY){
-                binding.textResult.text = "∞"
-            }
-            else if (expressionResult.value == Double.NEGATIVE_INFINITY){
-                binding.textResult.text = "-∞"
-            }
-            else {
-                binding.textResult.text =
-                    "=" + expressionResult.value.toBeautyString().replace('.', ',')
+            when {
+                expressionResult.value.isNaN() -> {
+                    binding.textResult.text = if (hard) "Math error" else ""
+                }
+                expressionResult.value == Double.POSITIVE_INFINITY -> {
+                    binding.textResult.text = "∞"
+                }
+                expressionResult.value == Double.NEGATIVE_INFINITY -> {
+                    binding.textResult.text = "-∞"
+                }
+                else -> {
+                    binding.textResult.text = "=".plus(expressionResult.value.toBeautyString().replace('.', ','))
+                }
             }
         }
         else{

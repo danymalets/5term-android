@@ -1,57 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".SpecificButtonsFragment"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        android:padding="0dp">
-
-        <TextView
-            android:freezesText="true"
-            android:id="@+id/text_expression"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="start"
-            android:gravity="bottom|end"
-            android:textSize="30sp"
-            tools:text="2+2" />
-
-        <TextView
-            android:freezesText="true"
-            android:id="@+id/text_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:textSize="30sp"
-            android:text="@string/result_panel_text" />
-
-    </LinearLayout>
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="8"
-        android:rowCount="5"
-        android:rowOrderPreserved="false">
-
-
-        <Button
-            android:id="@+id/button_sqrt"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_sqrt" />
-
-        <Button
-            android:id="@+id/button_factorial"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_factorial" />
+        android:columnCount="5"
+        android:rowCount="8">
 
         <Button
             android:id="@+id/button_bracket1"
@@ -59,113 +19,7 @@
             android:text="@string/button_bracket1" />
 
         <Button
-            android:id="@+id/button_bracket2"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_bracket2" />
-
-        <Button
-            android:id="@+id/button_clear"
-            style="@style/SimpleActionButton"
-            android:text="@string/button_clear" />
-
-        <Button
-            android:id="@+id/button_backspace"
-            style="@style/SimpleActionButton"
-            android:text="@string/button_backspace" />
-
-        <Button
-            android:id="@+id/button_percent"
-            style="@style/SimpleActionButton"
-            android:text="@string/button_percent" />
-
-        <Button
-            android:id="@+id/button_divide"
-            style="@style/SimpleActionButton"
-            android:text="@string/button_divide" />
-
-        <Button
-            android:id="@+id/button_ln"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_ln" />
-
-        <Button
-            android:id="@+id/button_lg"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_lg" />
-
-        <Button
-            android:id="@+id/button_abs"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_abs" />
-
-        <Button
-            android:id="@+id/button_pi"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_pi" />
-
-        <Button
-            android:id="@+id/button_seven"
-            style="@style/CharacterButton"
-            android:text="@string/button_seven" />
-
-        <Button
-            android:id="@+id/button_eight"
-            style="@style/CharacterButton"
-            android:text="@string/button_eight" />
-
-        <Button
-            android:id="@+id/button_nine"
-            style="@style/CharacterButton"
-            android:text="@string/button_nine" />
-
-        <Button
-            android:id="@+id/button_multiply"
-            style="@style/SimpleActionButton"
-            android:text="@string/button_multiply" />
-
-        <Button
-            android:id="@+id/button_power"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_power" />
-
-        <Button
-            android:id="@+id/button_reverse"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_reverse" />
-
-        <Button
-            android:id="@+id/button_power_two"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_power_two" />
-
-        <Button
-            android:id="@+id/button_power_three"
-            style="@style/ComplexActionButton"
-            android:text="@string/button_power_three" />
-
-        <Button
-            android:id="@+id/button_four"
-            style="@style/CharacterButton"
-            android:text="@string/button_four" />
-
-        <Button
-            android:id="@+id/button_five"
-            style="@style/CharacterButton"
-            android:text="@string/button_five" />
-
-        <Button
-            android:id="@+id/button_six"
-            style="@style/CharacterButton"
-            android:text="@string/button_six" />
-
-        <Button
-            android:id="@+id/button_subtract"
-            style="@style/SimpleActionButton"
-            android:text="@string/button_subtract" />
-
-        <Button
             android:id="@+id/button_sin"
-            android:onClick="onButtonClick"
             style="@style/ComplexActionButton"
             android:text="@string/button_sin" />
 
@@ -175,7 +29,7 @@
             android:text="@string/button_cos" />
 
         <Button
-            android:id="@+id/button_tan"
+            android:id="@+id/button_ten"
             style="@style/ComplexActionButton"
             android:text="@string/button_tan" />
 
@@ -185,24 +39,9 @@
             android:text="@string/button_cot" />
 
         <Button
-            android:id="@+id/button_one"
-            style="@style/CharacterButton"
-            android:text="@string/button_one" />
-
-        <Button
-            android:id="@+id/button_two"
-            style="@style/CharacterButton"
-            android:text="@string/button_two" />
-
-        <Button
-            android:id="@+id/button_three"
-            style="@style/CharacterButton"
-            android:text="@string/button_three" />
-
-        <Button
-            android:id="@+id/button_add"
-            style="@style/SimpleActionButton"
-            android:text="@string/button_add" />
+            android:id="@+id/button_bracket2"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_bracket2" />
 
         <Button
             android:id="@+id/button_asin"
@@ -225,6 +64,136 @@
             android:text="@string/button_acot" />
 
         <Button
+            android:id="@+id/button_ln"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_ln" />
+
+        <Button
+            android:id="@+id/button_power"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_power" />
+
+        <Button
+            android:id="@+id/button_reverse"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_reverse" />
+
+        <Button
+            android:id="@+id/button_power_two"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_power_two" />
+
+        <Button
+            android:id="@+id/button_pi"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_pi" />
+
+        <Button
+            android:id="@+id/button_lg"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_lg" />
+
+        <Button
+            android:id="@+id/button_clear"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_clear" />
+
+        <Button
+            android:id="@+id/button_backspace"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_backspace" />
+
+        <Button
+            android:id="@+id/button_percent"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_percent" />
+
+        <Button
+            android:id="@+id/button_divide"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_divide" />
+
+        <Button
+            android:id="@+id/button_abs"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_abs" />
+
+        <Button
+            android:id="@+id/button_seven"
+            style="@style/CharacterButton"
+            android:text="@string/button_seven" />
+
+        <Button
+            android:id="@+id/button_eight"
+            style="@style/CharacterButton"
+            android:text="@string/button_eight" />
+
+        <Button
+            android:id="@+id/button_nine"
+            style="@style/CharacterButton"
+            android:text="@string/button_nine" />
+
+        <Button
+            android:id="@+id/button_multiply"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_multiply" />
+
+        <Button
+            android:id="@+id/button_sqrt"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_sqrt" />
+
+        <Button
+            android:id="@+id/button_four"
+            style="@style/CharacterButton"
+            android:text="@string/button_four" />
+
+        <Button
+            android:id="@+id/button_five"
+            style="@style/CharacterButton"
+            android:text="@string/button_five" />
+
+        <Button
+            android:id="@+id/button_six"
+            style="@style/CharacterButton"
+            android:text="@string/button_six" />
+
+        <Button
+            android:id="@+id/button_subtract"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_subtract" />
+
+        <Button
+            android:id="@+id/button_factorial"
+            style="@style/ComplexActionButton"
+            android:text="@string/button_factorial" />
+
+        <Button
+            android:id="@+id/button_one"
+            style="@style/CharacterButton"
+            android:text="@string/button_one" />
+
+        <Button
+            android:id="@+id/button_two"
+            style="@style/CharacterButton"
+            android:text="@string/button_two" />
+
+        <Button
+            android:id="@+id/button_three"
+            style="@style/CharacterButton"
+            android:text="@string/button_three" />
+
+        <Button
+            android:id="@+id/button_add"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_add" />
+
+        <Button
+            android:id="@+id/button_change"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_change" />
+
+        <Button
             android:id="@+id/button_e"
             style="@style/CharacterButton"
             android:text="@string/button_e" />
@@ -245,5 +214,4 @@
             android:text="@string/button_result" />
 
     </GridLayout>
-
-</LinearLayout>
+</FrameLayout>
