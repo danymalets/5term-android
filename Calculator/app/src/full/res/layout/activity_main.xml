@@ -22,7 +22,7 @@
             android:ellipsize="start"
             android:gravity="bottom|end"
             android:textSize="30sp"
-            tools:text="2+2" />
+            tools:text="22" />
 
         <TextView
             android:freezesText="true"
@@ -40,5 +40,7 @@
         android:name="com.example.calculator.BasicButtonsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
 
 </LinearLayout>

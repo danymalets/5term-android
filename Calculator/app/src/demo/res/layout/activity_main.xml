@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:freezesText="true"
+            android:id="@+id/text_expression"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:gravity="bottom|end"
+            android:textSize="30sp"
+            tools:text="22" />
+
+        <TextView
+            android:freezesText="true"
+            android:id="@+id/text_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="40sp"
+            android:text="@string/result_panel_text" />
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rowCount="5"
+        android:columnCount="4">
+
+        <Button
+            android:id="@+id/button_clear"
+            style="@style/SimpleActionButton"
+            android:text="@string/button_clear"/>
+
+        <Button
+            android:id="@+id/button_backspace"
+            android:text="@string/button_backspace"
+            style="@style/SimpleActionButton"/>
+
+        <Button
+            android:id="@+id/button_percent"
+            android:text="@string/button_percent"
+            style="@style/SimpleActionButton"/>
+
+        <Button
+            android:id="@+id/button_divide"
+            android:text="@string/button_divide"
+            style="@style/SimpleActionButton"/>
+
+        <Button
+            android:id="@+id/button_seven"
+            android:text="@string/button_seven"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_eight"
+            android:text="@string/button_eight"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_nine"
+            android:text="@string/button_nine"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_multiply"
+            android:text="@string/button_multiply"
+            style="@style/SimpleActionButton"/>
+
+        <Button
+            android:id="@+id/button_four"
+            android:text="@string/button_four"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_five"
+            android:text="@string/button_five"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_six"
+            android:text="@string/button_six"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_subtract"
+            android:text="@string/button_subtract"
+            style="@style/SimpleActionButton"/>
+
+        <Button
+            android:id="@+id/button_one"
+            android:text="@string/button_one"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_two"
+            android:text="@string/button_two"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_three"
+            android:text="@string/button_three"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_add"
+            android:text="@string/button_add"
+            style="@style/SimpleActionButton"/>
+
+        <Button
+            android:id="@+id/button_pi"
+            android:text="@string/button_pi"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_zero"
+            android:text="@string/button_zero"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_comma"
+            android:text="@string/button_comma"
+            style="@style/CharacterButton"/>
+
+        <Button
+            android:id="@+id/button_result"
+            android:text="@string/button_result"
+            style="@style/SimpleActionButton"/>
+
+    </GridLayout>
+
+</LinearLayout>
