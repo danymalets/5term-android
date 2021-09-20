@@ -19,7 +19,7 @@
             android:id="@+id/text_expression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="start"
+            android:maxLines="1"
             android:gravity="bottom|end"
             android:textSize="30sp"
             tools:text="2+2" />
@@ -29,6 +29,7 @@
             android:id="@+id/text_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:gravity="end"
             android:textSize="30sp"
             android:text="@string/result_panel_text" />

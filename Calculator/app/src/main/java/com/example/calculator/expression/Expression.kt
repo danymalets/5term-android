@@ -1,6 +1,5 @@
 package com.example.calculator.expression
 
-import android.util.Log
 import com.example.calculator.expression_part.ExpressionPart
 import com.example.calculator.expression_part.NumberPart
 import com.example.calculator.expression_part.OperationSign
@@ -13,12 +12,15 @@ class Expression {
 
     private var content: MutableList<ExpressionPart> = mutableListOf()
 
+    private var isHardSolved: Boolean = false
+
     fun getBeautyExpression(): String {
         var expression = ""
 
         for (expressionPart in content){
             expression += expressionPart.getBeautyContent()
         }
+
         return expression
     }
 
@@ -77,7 +79,6 @@ class Expression {
         } else{
             (lastNumber.toDouble() / 100).toBeautyString()
         }
-        Log.d("nln", newLastNumber)
         for (numberCharacter in newLastNumber){
             when (numberCharacter){
                 '-' -> {
@@ -96,15 +97,20 @@ class Expression {
         content = newContent
     }
 
-    fun getResult(): ExpressionResult {
+    fun getResult(hard: Boolean = false): ExpressionResult {
+        isHardSolved = hard
         return getResult(content)
     }
 
     private fun getResult(expression: MutableList<ExpressionPart>): ExpressionResult{
         var expressionString = ""
-        for (expressionPart in expression) {
-            if (expressionPart != expression.last() || expressionPart !is OperationSign) {
+        for (expressionPartIndex in expression.indices) {
+            val expressionPart = expression[expressionPartIndex]
+            if (!(expressionPart == expression.last() && expressionPart is OperationSign)) {
                 expressionString += expressionPart.getInternalString()
+            }
+            if (expressionPartIndex != expression.size - 1 && needMultiplication(expressionPart, expression[expressionPartIndex + 1])){
+                expressionString += "*"
             }
         }
         if (expressionString.isEmpty()) {
@@ -122,6 +128,26 @@ class Expression {
         val parserExpression = ParserExpression(expressionString, lg)
         val result = parserExpression.calculate()
         val isValid = parserExpression.checkLexSyntax()
+
         return ExpressionResult(result, isValid)
+    }
+
+    private fun needMultiplication(first: ExpressionPart, second: ExpressionPart): Boolean{
+        return first.isRightMultiplicationRequired() && second.isLeftMultiplicationRequired() &&
+                !(first is NumberPart && second is NumberPart)
+    }
+
+    fun isHardSolved() = isHardSolved
+
+    fun resultToExpression(){
+        val result = getResult().value.toBeautyString()
+        clear()
+        for (numberCharacter in result){
+            when (numberCharacter){
+                '-' -> append(OperationSign("-"))
+                '.' -> append(NumberPart(",", "."))
+                else -> append(NumberPart(numberCharacter.toString()))
+            }
+        }
     }
 }

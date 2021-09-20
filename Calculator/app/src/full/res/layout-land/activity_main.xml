@@ -19,16 +19,17 @@
             android:id="@+id/text_expression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="start"
-            android:gravity="bottom|end"
+            android:maxLines="1"
+            android:gravity="end"
             android:textSize="30sp"
-            tools:text="2+2" />
+            tools:text=""/>
 
         <TextView
             android:freezesText="true"
             android:id="@+id/text_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:gravity="end"
             android:textSize="30sp"
             android:text="@string/result_panel_text" />

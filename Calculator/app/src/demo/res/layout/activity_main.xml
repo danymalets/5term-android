@@ -12,13 +12,14 @@
         android:layout_height="200dp"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="5dp">
 
         <TextView
             android:freezesText="true"
             android:id="@+id/text_expression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="2"
             android:ellipsize="start"
             android:gravity="bottom|end"
             android:textSize="30sp"
@@ -29,6 +30,8 @@
             android:id="@+id/text_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="start"
             android:gravity="end"
             android:textSize="40sp"
             android:text="@string/result_panel_text" />
