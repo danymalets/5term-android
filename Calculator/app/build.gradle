@@ -90,5 +90,5 @@ task func{
     println getVersionCode()
     println getVersionName()
     println getVersionName()
-
+    println getVersionName()
 }
