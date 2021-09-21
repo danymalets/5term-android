@@ -1,5 +1,6 @@
 package com.example.calculator.expression
 
+import android.util.Log
 import com.example.calculator.expression_part.ExpressionPart
 import com.example.calculator.expression_part.NumberPart
 import com.example.calculator.expression_part.OperationSign

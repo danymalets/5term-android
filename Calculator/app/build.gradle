@@ -27,7 +27,6 @@ def getVersionName = { ->
         }
         def lastTag = stdout.toString().trim()
         return lastTag.replaceAll('v|-\\w+$', '').replace('-', '.')
-
     }
     catch (ignored) {
         return null
@@ -90,4 +89,6 @@ dependencies {
 task func{
     println getVersionCode()
     println getVersionName()
+    println getVersionName()
+
 }
