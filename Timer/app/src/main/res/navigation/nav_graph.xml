@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/timerListFragment">
+
+    <fragment
+        android:id="@+id/timerListFragment"
+        android:name="com.example.timer.TimerListFragment"
+        android:label="Timers"
+        tools:layout="@layout/fragment_timer_list" >
+        <action
+            android:id="@+id/action_timerListFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.example.timer.TimerFragment"
+        android:label="Timer"
+        tools:layout="@layout/fragment_timer" >
+        <argument android:name="timer"
+            app:argType="string" />
+    </fragment>
+</navigation>
