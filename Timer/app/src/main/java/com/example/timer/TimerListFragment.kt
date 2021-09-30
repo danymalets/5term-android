@@ -1,10 +1,10 @@
 package com.example.timer
 
 import android.os.Bundle
+import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.timer.adapter.TimerInformationAdapter
@@ -35,5 +35,20 @@ class TimerListFragment : Fragment() {
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = TimerInformationAdapter(this, listOf(TimerInformation(1,1,1,1,1)))
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.layout_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.button_settings -> {
+                val action = TimerListFragmentDirections.actionTimerListFragmentToSettingsFragment()
+                binding.root.findNavController().navigate(action)
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_timerListFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
+        <action
+            android:id="@+id/action_timerListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
@@ -22,4 +25,8 @@
         <argument android:name="timer"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.timer.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
