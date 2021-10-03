@@ -1,15 +1,16 @@
-package com.example.timer
+package com.example.timer.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.timer.adapter.TimerInformationAdapter
+import com.example.timer.R
+import com.example.timer.adapter.TimerAdapter
 import com.example.timer.databinding.FragmentTimerListBinding
-import com.example.timer.model.TimerInformation
+import com.example.timer.model.TimerViewModel
 
 class TimerListFragment : Fragment() {
 
@@ -17,6 +18,8 @@ class TimerListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
+
+    private val timerViewModel: TimerViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +37,16 @@ class TimerListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = TimerInformationAdapter(this, listOf(TimerInformation(1,1,1,1,1)))
+        val timerAdapter = TimerAdapter()
+        recyclerView.adapter = timerAdapter
+
+        binding.floatingActionButton.setOnClickListener{
+            findNavController().navigate(R.id.action_timerListFragment_to_addNewTimerFragment)
+        }
+
+        timerViewModel.allTimers.observe(viewLifecycleOwner, { timerList ->
+            timerAdapter.setData(timerList)
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -44,8 +56,7 @@ class TimerListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.button_settings -> {
-                val action = TimerListFragmentDirections.actionTimerListFragmentToSettingsFragment()
-                binding.root.findNavController().navigate(action)
+                findNavController().navigate(R.id.action_timerListFragment_to_settingsFragment)
                 return true
             }
             else -> super.onOptionsItemSelected(item)
