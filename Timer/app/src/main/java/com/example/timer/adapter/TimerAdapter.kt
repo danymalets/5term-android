@@ -15,7 +15,7 @@ class TimerAdapter : RecyclerView.Adapter<TimerAdapter.ItemViewHolder>()
     private var timerList = emptyList<Timer>()
 
     class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view){
-        val button: Button = view.findViewById(R.id.button_item)
+        //val button: Button = view.findViewById(R.id.button228)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -29,12 +29,12 @@ class TimerAdapter : RecyclerView.Adapter<TimerAdapter.ItemViewHolder>()
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = timerList[position]
-        holder.button.text = "345"
-
-        holder.button.setOnClickListener {
-            val action = TimerListFragmentDirections.actionTimerListFragmentToTimerFragment(timer = "123")
-            holder.view.findNavController().navigate(action)
-        }
+//        holder.button.text = "345"
+//
+//        holder.button.setOnClickListener {
+//            val action = TimerListFragmentDirections.actionTimerListFragmentToTimerFragment(timer = "123")
+//            holder.view.findNavController().navigate(action)
+//        }
     }
 
     fun setData(timerList: List<Timer>){
