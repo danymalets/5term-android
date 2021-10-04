@@ -2,11 +2,11 @@ package com.example.timer.database
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.Entity
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.timer.model.Sequence
 
-@Database(entities = [Timer::class], version = 1)
+@Database(entities = [Sequence::class], version = 3)
 abstract class TimerDatabase: RoomDatabase() {
     abstract fun timerDao(): TimerDao
 
@@ -19,7 +19,7 @@ abstract class TimerDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     TimerDatabase::class.java,
-                    "timer_database")
+                    "timer_database").fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
 

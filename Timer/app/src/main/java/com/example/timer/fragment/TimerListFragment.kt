@@ -3,14 +3,14 @@ package com.example.timer.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.timer.R
 import com.example.timer.adapter.TimerAdapter
 import com.example.timer.databinding.FragmentTimerListBinding
-import com.example.timer.model.TimerViewModel
+import com.example.timer.viewmodel.TimerListViewModel
 
 class TimerListFragment : Fragment() {
 
@@ -19,7 +19,7 @@ class TimerListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val timerViewModel: TimerViewModel by activityViewModels()
+    private val timerViewModel: TimerListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,7 @@ class TimerListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val timerAdapter = TimerAdapter()
+        val timerAdapter = TimerAdapter(requireContext(), timerViewModel)
         recyclerView.adapter = timerAdapter
 
         binding.floatingActionButton.setOnClickListener{

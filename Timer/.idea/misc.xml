@@ -9,7 +9,8 @@
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2033514492753623" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.1875" />
-        <entry key="app/src/main/res/layout/fragment_add_new_timer.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/fragment_add_new_timer.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_edit_timer.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/fragment_timer.xml" value="0.3120471014492754" />
         <entry key="app/src/main/res/layout/fragment_timer_list.xml" value="0.22327898550724637" />
