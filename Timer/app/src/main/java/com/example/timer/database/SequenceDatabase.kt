@@ -6,19 +6,19 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.timer.model.Sequence
 
-@Database(entities = [Sequence::class], version = 3)
-abstract class TimerDatabase: RoomDatabase() {
-    abstract fun timerDao(): TimerDao
+@Database(entities = [Sequence::class], version = 4)
+abstract class SequenceDatabase: RoomDatabase() {
+    abstract fun sequenceDao(): SequenceDao
 
     companion object {
         @Volatile
-        private var INSTANCE: TimerDatabase? = null
+        private var INSTANCE: SequenceDatabase? = null
 
-        fun getDatabase(context: Context): TimerDatabase {
+        fun getDatabase(context: Context): SequenceDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context,
-                    TimerDatabase::class.java,
+                    SequenceDatabase::class.java,
                     "timer_database").fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance

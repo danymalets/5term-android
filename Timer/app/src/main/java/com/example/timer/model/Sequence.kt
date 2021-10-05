@@ -10,17 +10,17 @@ import kotlinx.android.parcel.Parcelize
 class Sequence(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val title: String,
-    val color: Int,
-    val warmUp: Int,
-    val workout: Int,
-    val rest: Int,
-    val cycles: Int,
-    val coolDown: Int
+    var title: String,
+    var color: Int,
+    var warmUp: Int,
+    var workout: Int,
+    var rest: Int,
+    var cycles: Int,
+    var cooldown: Int
 ): Parcelable{
 
     fun totalDuration() = warmUp +
             workout * cycles +
             rest * (cycles - 1) +
-            coolDown
+            cooldown
 }

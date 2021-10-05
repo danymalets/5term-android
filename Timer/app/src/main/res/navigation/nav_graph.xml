@@ -3,54 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/timerListFragment">
-
+    app:startDestination="@id/sequenceListFragment">
     <fragment
-        android:id="@+id/timerListFragment"
-        android:name="com.example.timer.fragment.TimerListFragment"
-        android:label="Timer List"
-        tools:layout="@layout/fragment_timer_list" >
+        android:id="@+id/sequenceListFragment"
+        android:name="com.example.timer.fragment.SequenceListFragment"
+        android:label="All Sequences"
+        tools:layout="@layout/fragment_sequence_list" >
         <action
-            android:id="@+id/action_timerListFragment_to_timerFragment"
+            android:id="@+id/action_sequenceListFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
         <action
-            android:id="@+id/action_timerListFragment_to_settingsFragment"
+            android:id="@+id/action_sequenceListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_timerListFragment_to_addNewTimerFragment"
-            app:destination="@id/addNewTimerFragment" />
-        <action
-            android:id="@+id/action_timerListFragment_to_editTimerFragment"
-            app:destination="@id/editTimerFragment" />
+            android:id="@+id/action_sequenceListFragment_to_editSequenceFragment"
+            app:destination="@id/editSequenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.example.timer.fragment.TimerFragment"
         android:label="Timer"
         tools:layout="@layout/fragment_timer" >
-        <argument android:name="timer"
-            app:argType="string" />
+        <argument
+            android:name="sequence"
+            app:argType="com.example.timer.model.Sequence" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.timer.fragment.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="Settings" />
     <fragment
-        android:id="@+id/addNewTimerFragment"
-        android:name="com.example.timer.fragment.add.AddTimerFragment"
-        android:label="New Timer"
-        tools:layout="@layout/fragment_add_timer" >
+        android:id="@+id/editSequenceFragment"
+        android:name="com.example.timer.fragment.EditSequenceFragment"
+        android:label="Edit Sequence" >
         <action
-            android:id="@+id/action_addNewTimerFragment_to_timerListFragment"
-            app:destination="@id/timerListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/editTimerFragment"
-        android:name="com.example.timer.fragment.EditTimerFragment"
-        android:label="Edit Timer"
-        tools:layout="@layout/fragment_edit_timer" >
-        <action
-            android:id="@+id/action_editTimerFragment_to_timerListFragment"
-            app:destination="@id/timerListFragment" />
+            android:id="@+id/action_editSequenceFragment_to_sequenceListFragment"
+            app:destination="@id/sequenceListFragment" />
+        <argument
+            android:name="sequence"
+            app:argType="com.example.timer.model.Sequence" />
+        <argument
+            android:name="new"
+            app:argType="boolean" />
     </fragment>
 </navigation>

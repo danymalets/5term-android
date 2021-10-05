@@ -1,47 +1,67 @@
 package com.example.timer.viewmodel
 
-import android.graphics.Color
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.app.Application
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.util.Log
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.timer.model.Sequence
+import com.example.timer.model.Timer
+import com.example.timer.service.TimerService
 
-class TimerViewModel: ViewModel() {
+class TimerViewModel(private val context: Context, private val sequence: Sequence): ViewModel() {
 
-    private val _title = MutableLiveData<String>("New Timer")
-    val title: LiveData<String>
-        get() = _title
+    private lateinit var receiver: BroadcastReceiver
 
-    val color = MutableLiveData<Int>(Color.WHITE)
+    init{
+        Intent(context, TimerService::class.java).also { intent ->
+            intent.putParcelableArrayListExtra(TimerService.TIMER_LIST, ArrayList(toTimerList()))
+            context.startService(intent)
+        }
 
-    private val _warmUp = MutableLiveData<Int>(1)
-    val warmUp: LiveData<Int>
-        get() = _warmUp
+        Log.d("vm", "start")
 
-    private val _workout = MutableLiveData<Int>(2)
-    val workout: LiveData<Int>
-        get() = _workout
 
-    private val _rest = MutableLiveData<Int>(3)
-    val rest: LiveData<Int>
-        get() = _rest
+        receiver = object: BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent) {
+                if (intent.action == "TICK") {
+                    val title = intent.getStringExtra(TimerService.TITLE)
+                    val duration = intent.getIntExtra(TimerService.DURATION, 0)
+                }
+            }
+        }
+        context.registerReceiver(receiver, IntentFilter(TimerService.TICK))
+    }
 
-    private val _cycles = MutableLiveData<Int>(4)
-    val cycles: LiveData<Int>
-        get() = _cycles
+    fun toTimerList(): List<Timer>{
+        val list = mutableListOf(Timer(WARM_UP, sequence.warmUp))
+        for (i in 1 until sequence.cycles){
+            list.add(Timer(WORKOUT, sequence.workout))
+            list.add(Timer(REST, sequence.rest))
+        }
+        list.add(Timer(WORKOUT, sequence.workout))
+        list.add(Timer(COOLDOWN, sequence.cooldown))
+        return list
+    }
 
-    private val _cooldown = MutableLiveData<Int>(5)
-    val cooldown: LiveData<Int>
-        get() = _cooldown
+    companion object{
+        const val WARM_UP = "Warm-up"
+        const val WORKOUT = "Workout"
+        const val REST = "Rest"
+        const val COOLDOWN = "Cooldown"
+    }
+}
 
-    fun getTimer() = Sequence(
-        0,
-        title.value.toString(),
-        color.value!!.toInt(),
-        warmUp.value!!.toInt(),
-        workout.value!!.toInt(),
-        rest.value!!.toInt(),
-        cycles.value!!.toInt(),
-        cooldown.value!!.toInt()
-    )
+class TimerViewModelFactory(private val context: Context, private val sequence: Sequence) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(TimerViewModel::class.java)) {
+            return TimerViewModel(context, sequence) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }
