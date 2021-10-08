@@ -16,6 +16,7 @@ import com.google.android.material.card.MaterialCardView
 import android.R
 import android.app.AlertDialog
 import android.content.DialogInterface
+import com.example.timer.service.TimerService
 
 
 class SequenceAdapter(
@@ -52,8 +53,13 @@ class SequenceAdapter(
         val item = sequenceList[position]
 
         holder.buttonPlay.setOnClickListener {
-            val action = SequenceListFragmentDirections.actionSequenceListFragmentToTimerFragment(item)
-            holder.view.findNavController().navigate(action)
+            if (TimerService.hasRunningTimer()){
+                Toast.makeText(context, "Has running timer", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                val action = SequenceListFragmentDirections.actionSequenceListFragmentToTimerFragment(item)
+                holder.view.findNavController().navigate(action)
+            }
         }
         holder.buttonEdit.setOnClickListener {
             val action = SequenceListFragmentDirections.actionSequenceListFragmentToEditSequenceFragment(item, false)
