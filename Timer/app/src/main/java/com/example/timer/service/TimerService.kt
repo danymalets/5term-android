@@ -37,13 +37,14 @@ class TimerService : Service() {
     }
 
     private fun startCountdown(seconds: Int){
-        object: CountDownTimer(seconds * 1000L, 1) {
+        object: CountDownTimer(seconds * 1000L, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val sendLevel = Intent()
                 sendLevel.action = TICK
                 sendLevel.putExtra(TITLE, timerList[timerIndex].title)
                 sendLevel.putExtra(DURATION, (((millisUntilFinished + 0) / 1000).toInt()))
                 sendBroadcast(sendLevel)
+                Log.d("timer service", "seconds")
             }
 
             override fun onFinish() {
@@ -61,12 +62,11 @@ class TimerService : Service() {
     companion object{
         private var instance: TimerService? = null
 
-        @RequiresApi(Build.VERSION_CODES.O)
         fun startTimerIfNotStarted(context: Context, timerList: ArrayList<Timer>){
             if (!hasRunningTimer()){
                 Intent(context, TimerService::class.java).also { intent ->
                     intent.putParcelableArrayListExtra(TIMER_LIST, ArrayList(timerList))
-                    context.startForegroundService(intent)
+                    context.startService(intent)
                 }
             }
         }

@@ -27,6 +27,9 @@
         <argument
             android:name="sequence"
             app:argType="com.example.timer.model.Sequence" />
+        <argument
+            android:name="firstInit"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

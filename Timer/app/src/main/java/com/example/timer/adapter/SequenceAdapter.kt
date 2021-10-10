@@ -57,7 +57,7 @@ class SequenceAdapter(
                 Toast.makeText(context, "Has running timer", Toast.LENGTH_SHORT).show()
             }
             else {
-                val action = SequenceListFragmentDirections.actionSequenceListFragmentToTimerFragment(item)
+                val action = SequenceListFragmentDirections.actionSequenceListFragmentToTimerFragment(item, true)
                 holder.view.findNavController().navigate(action)
             }
         }
