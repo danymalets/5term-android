@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.timer.viewmodel.EditSequenceViewModel" />
+            type="com.example.timer.fragment.editsequence.EditSequenceViewModel" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.EditSequenceFragment">
+        tools:context=".fragment.editsequence.EditSequenceFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

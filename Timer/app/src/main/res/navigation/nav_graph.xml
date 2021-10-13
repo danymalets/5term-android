@@ -6,7 +6,7 @@
     app:startDestination="@id/sequenceListFragment">
     <fragment
         android:id="@+id/sequenceListFragment"
-        android:name="com.example.timer.fragment.SequenceListFragment"
+        android:name="com.example.timer.fragment.sequencelist.SequenceListFragment"
         android:label="All Sequences"
         tools:layout="@layout/fragment_sequence_list" >
         <action
@@ -21,9 +21,12 @@
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
-        android:name="com.example.timer.fragment.TimerFragment"
+        android:name="com.example.timer.fragment.timer.TimerFragment"
         android:label="Timer"
         tools:layout="@layout/fragment_timer" >
+        <action
+            android:id="@+id/action_timerFragment_to_sequenceListFragment"
+            app:destination="@id/sequenceListFragment" />
         <argument
             android:name="sequence"
             app:argType="com.example.timer.model.Sequence" />
@@ -37,7 +40,7 @@
         android:label="Settings" />
     <fragment
         android:id="@+id/editSequenceFragment"
-        android:name="com.example.timer.fragment.EditSequenceFragment"
+        android:name="com.example.timer.fragment.editsequence.EditSequenceFragment"
         android:label="Edit Sequence" >
         <action
             android:id="@+id/action_editSequenceFragment_to_sequenceListFragment"

@@ -4,21 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.timer.R
-import com.example.timer.fragment.SequenceListFragmentDirections
-import com.example.timer.model.Sequence
 import com.example.timer.model.Timer
-import com.example.timer.viewmodel.SequenceListViewModel
-import com.google.android.material.card.MaterialCardView
 
 class TimerAdapter(
     private val context: Context,
-    private val content: List<Timer>
+    private val content: Array<Timer>
 ) : RecyclerView.Adapter<TimerAdapter.ItemViewHolder>()
 {
 

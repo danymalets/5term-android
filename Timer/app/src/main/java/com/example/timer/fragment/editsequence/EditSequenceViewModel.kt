@@ -1,4 +1,4 @@
-package com.example.timer.viewmodel
+package com.example.timer.fragment.editsequence
 
 import android.graphics.Color
 import androidx.lifecycle.LiveData

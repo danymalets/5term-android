@@ -1,4 +1,4 @@
-package com.example.timer.fragment
+package com.example.timer.fragment.editsequence
 
 import android.graphics.Color
 import android.os.Bundle
@@ -13,8 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.timer.databinding.FragmentEditSequenceBinding
-import com.example.timer.viewmodel.SequenceListViewModel
-import com.example.timer.viewmodel.EditSequenceViewModel
+import com.example.timer.fragment.sequencelist.SequenceListViewModel
 import top.defaults.colorpicker.ColorPickerPopup
 import top.defaults.colorpicker.ColorPickerPopup.ColorPickerObserver
 

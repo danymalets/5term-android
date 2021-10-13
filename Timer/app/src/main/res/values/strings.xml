@@ -8,4 +8,14 @@
     <string name="sequence_item_cycles">Cycles: %d</string>
     <string name="sequence_item_cooldown">Cooldown: %d sec</string>
     <string name="sequence_item_total_duration">Total duration: %d sec</string>
+    <string name="delete">Delete</string>
+
+    <string name="warm_up">Delete</string>
+    <string name="workout">Workout</string>
+    <string name="rest">Rest</string>
+    <string name="cooldown">Cooldown</string>
+    <string name="pause">Pause</string>
+    <string name="run">Run</string>
+
+
 </resources>

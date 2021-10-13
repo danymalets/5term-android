@@ -9,14 +9,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.timer.fragment.SequenceListFragmentDirections
 import com.example.timer.model.Sequence
-import com.example.timer.viewmodel.SequenceListViewModel
+import com.example.timer.fragment.sequencelist.SequenceListViewModel
 import com.google.android.material.card.MaterialCardView
-import android.R
 import android.app.AlertDialog
-import android.content.DialogInterface
-import com.example.timer.service.TimerService
+import android.content.SharedPreferences
+import com.example.timer.fragment.sequencelist.SequenceListFragmentDirections
+import com.example.timer.fragment.timer.adapter.KEY_SEQUENCE
+import com.example.timer.fragment.timer.adapter.PREFS_TIMER
+import com.google.gson.Gson
 
 
 class SequenceAdapter(
@@ -53,13 +54,8 @@ class SequenceAdapter(
         val item = sequenceList[position]
 
         holder.buttonPlay.setOnClickListener {
-            if (TimerService.hasRunningTimer()){
-                Toast.makeText(context, "Has running timer", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                val action = SequenceListFragmentDirections.actionSequenceListFragmentToTimerFragment(item, true)
-                holder.view.findNavController().navigate(action)
-            }
+            val action = SequenceListFragmentDirections.actionSequenceListFragmentToTimerFragment(item, true)
+            holder.view.findNavController().navigate(action)
         }
         holder.buttonEdit.setOnClickListener {
             val action = SequenceListFragmentDirections.actionSequenceListFragmentToEditSequenceFragment(item, false)
