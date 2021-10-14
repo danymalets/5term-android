@@ -3,12 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreferenceCompat
-        app:key="notifications"
-        app:title="Enable message notifications"/>
+        app:key="@string/dark_theme"
+        app:title="Dark theme"
+        app:summary="Application restart required"/>
+
+    <ListPreference
+        app:key="@string/language"
+        app:title="Language"
+        app:summary="Application restart required"
+        app:entries="@array/languageList"
+        app:entryValues="@array/languageListData"/>
 
     <Preference
-        app:key="feedback"
-        app:title="Send feedback"
-        app:summary="Report technical issues or suggest new features"/>
+        app:key="@string/delete_all"
+        app:title="Clear all data"
+        app:summary="Clear all data stored on the device"/>
 
 </PreferenceScreen>

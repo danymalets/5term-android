@@ -53,11 +53,11 @@ class TimerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val timerAdapter = TimerAdapter(requireContext(), timerList)
 
-        binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = TimerAdapter(context, timerList)
-        }
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = timerAdapter
+
         binding.root.setBackgroundColor(args.sequence.color)
 
         binding.textTimerTitle.text = timerList[0].duration.toString()
@@ -71,13 +71,17 @@ class TimerFragment : Fragment() {
             binding.textTimerTitle.text = it.toString()
         })
 
+        timerViewModel.timerObserver.timerIndex.observe(viewLifecycleOwner, {
+            timerAdapter.setSelected(it)
+        })
+
         timerViewModel.timerObserver.status.observe(viewLifecycleOwner, {
             if (it == TimerStatus.RUN){
-                binding.buttonPause.text = getString(R.string.pause)
+                binding.buttonPause.setImageDrawable(requireContext().getDrawable(R.drawable.ic_baseline_pause_24))
                 timerStatus = TimerStatus.RUN
             }
             else{
-                binding.buttonPause.text = getString(R.string.run)
+                binding.buttonPause.setImageDrawable(requireContext().getDrawable(R.drawable.ic_baseline_play_arrow_24))
                 timerStatus = TimerStatus.PAUSE
             }
         })
@@ -91,6 +95,14 @@ class TimerFragment : Fragment() {
             else{
                 timerViewModel.start()
             }
+        }
+
+        binding.buttonPrevious.setOnClickListener{
+            timerViewModel.previousTimer()
+        }
+
+        binding.buttonNext.setOnClickListener{
+            timerViewModel.nextTimer()
         }
     }
 

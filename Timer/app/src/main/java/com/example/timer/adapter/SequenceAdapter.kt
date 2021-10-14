@@ -62,16 +62,16 @@ class SequenceAdapter(
             holder.view.findNavController().navigate(action)
         }
         holder.buttonDelete.setOnClickListener {
-            sequenceViewModel.deleteSequence(item)
-            notifyDataSetChanged()
 
             val dialogBuilder = AlertDialog.Builder(context)
             dialogBuilder.setMessage("Do you want to delete this sequence?")
                 .setCancelable(false)
-                .setPositiveButton("Proceed") { _, _ ->
+                .setPositiveButton("Yes") { _, _ ->
+                    sequenceViewModel.deleteSequence(item)
+                    notifyDataSetChanged()
                     Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("Cancel") { dialog, _ ->
+                .setNegativeButton("No") { dialog, _ ->
                     dialog.cancel()
                 }
             val alert = dialogBuilder.create()

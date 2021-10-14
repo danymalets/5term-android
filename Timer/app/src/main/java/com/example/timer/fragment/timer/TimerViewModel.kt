@@ -31,6 +31,11 @@ class TimerViewModel(
 
     fun stop() = timerObserver.stop()
 
+    fun previousTimer() = timerObserver.previousTimer()
+
+    fun nextTimer() = timerObserver.nextTimer()
+
+
     fun stopNotification(){
         notificationAdapter.tryStopNotification(context)
     }

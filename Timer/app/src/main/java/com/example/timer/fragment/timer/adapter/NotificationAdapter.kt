@@ -7,15 +7,12 @@ import android.content.*
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationCompat.Builder
 import androidx.core.app.NotificationManagerCompat
-import androidx.navigation.NavArgs
 import androidx.navigation.NavDeepLinkBuilder
-import com.example.timer.MainActivity
+import com.example.timer.activity.MainActivity
 import com.example.timer.R
-import com.example.timer.fragment.timer.TimerFragmentArgs
 import com.example.timer.model.Sequence
 import com.example.timer.service.TimerService
 
@@ -34,7 +31,7 @@ class NotificationAdapter {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
             val binder = service as TimerService.LocalBinder
             mService = binder.getService()
-            setNewText(context, mService.getTitle() + " - " + mService.getRemainingTime())
+            setNewText(context, mService.getTitle(), mService.getRemainingTime().toString())
             mBound = true
         }
 
@@ -47,8 +44,8 @@ class NotificationAdapter {
         override fun onReceive(context: Context?, intent: Intent) {
             if (intent.action == TimerService.TICK) {
                 val title = intent.getStringExtra(TimerService.TITLE)
-                val duration = intent.getIntExtra(TimerService.DURATION, 0)
-                setNewText(context, duration.toString())
+                val remainingTime = intent.getIntExtra(TimerService.REMAINING_TIME, 0)
+                setNewText(context, title!!, remainingTime.toString())
             }
         }
     }
@@ -59,6 +56,8 @@ class NotificationAdapter {
         context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
 
         has = true
+
+        createNotificationChannel(context)
 
         val pendingIntent: PendingIntent = NavDeepLinkBuilder(context)
             .setComponentName(MainActivity::class.java)
@@ -80,7 +79,7 @@ class NotificationAdapter {
             .setContentIntent(pendingIntent)
             .setOnlyAlertOnce(true)
             .setOngoing(true)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
 
         NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, builder!!.build())
         context.registerReceiver(receiver, IntentFilter(TimerService.TICK))
@@ -94,9 +93,10 @@ class NotificationAdapter {
         context.applicationContext.unregisterReceiver(receiver)
     }
 
-    fun setNewText(context: Context?, text: String){
+    fun setNewText(context: Context?, title: String, text: String){
         if (context != null && builder != null && has) {
-            builder!!.setContentTitle(text)
+            builder!!.setContentTitle(title)
+            builder!!.setContentText("Remaining time: $text")
             with(NotificationManagerCompat.from(context)) {
                 notify(NOTIFICATION_ID, builder!!.build())
             }
@@ -106,8 +106,8 @@ class NotificationAdapter {
     private fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Timer channel"
-            val descriptionText = "Timer channel"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val descriptionText = "Displaying the current timer in a notification"
+            val importance = NotificationManager.IMPORTANCE_LOW
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
             }

@@ -13,10 +13,10 @@ interface SequenceDao {
     suspend fun updateSequence(sequence: Sequence)
 
     @Delete
-    fun deleteSequences(sequence: Sequence)
+    fun deleteSequence(sequence: Sequence)
 
-//    @Query("DELETE from timer_table")
-//    suspend fun deleteAllTimers(timer: Timer)
+    @Query("DELETE from sequence_table")
+    suspend fun deleteAllSequences()
 
     @Query("SELECT * FROM sequence_table ORDER BY id ASC")
     fun getAllSequences(): LiveData<List<Sequence>>

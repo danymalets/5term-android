@@ -4,12 +4,10 @@ import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.CountDownTimer
-import android.os.Debug
 import android.os.IBinder
 import android.util.Log
 import com.example.timer.fragment.timer.adapter.TimerStatus
 import com.example.timer.model.Timer
-import kotlinx.coroutines.NonCancellable.start
 
 
 class TimerService : Service() {
@@ -47,7 +45,8 @@ class TimerService : Service() {
     }
 
     fun getStatus() = status
-    fun getRemainingTime(): Int = (remainingTime / 1000).toInt()
+    fun getIndex() = timerIndex
+    fun getRemainingTime(): Int = ((remainingTime + 500) / 1000).toInt()
     fun getTitle() = timerList[timerIndex].title
 
     fun startTimer(){
@@ -55,14 +54,19 @@ class TimerService : Service() {
         timer = object: CountDownTimer(remainingTime, 1) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTime = millisUntilFinished
-                val sendLevel = Intent()
-                sendLevel.action = TICK
-                sendLevel.putExtra(TITLE, timerList[timerIndex].title)
-                sendLevel.putExtra(DURATION, getRemainingTime())
-                sendBroadcast(sendLevel)
+                val intent = Intent()
+                intent.action = TICK
+                intent.putExtra(TITLE, timerList[timerIndex].title)
+                intent.putExtra(TIMER_INDEX, timerIndex)
+                intent.putExtra(REMAINING_TIME, getRemainingTime())
+                sendBroadcast(intent)
             }
 
             override fun onFinish() {
+                val intent = Intent()
+                intent.action = FINISH
+                sendBroadcast(intent)
+
                 timerIndex++
                 if (timerIndex == timerList.size){
                 }
@@ -81,26 +85,26 @@ class TimerService : Service() {
     }
 
     fun previousTimer(){
+        val needStart = status == TimerStatus.RUN
+        stopTimer()
         if (timerIndex > 0){
-            stopTimer()
             timerIndex--
-            remainingTime = timerList[timerIndex].duration * 1000L
-            if (status == TimerStatus.RUN) startTimer()
         }
+        remainingTime = timerList[timerIndex].duration * 1000L
+        if (needStart) startTimer()
     }
 
     fun nextTimer(){
+        val needStart = status == TimerStatus.RUN
+        stopTimer()
         if (timerIndex < timerList.size - 1){
-            stopTimer()
             timerIndex++
-            remainingTime = timerList[timerIndex].duration * 1000L
-            if (status == TimerStatus.RUN) startTimer()
         }
+        remainingTime = timerList[timerIndex].duration * 1000L
+        if (needStart) startTimer()
     }
 
     fun deleteTimer(){
-        Log.d("delete stop", "IIIIIIIIIIIIIII")
-
         stopTimer()
         deleted = true;
     }
@@ -111,8 +115,11 @@ class TimerService : Service() {
         fun hasRunningTimer() = instance?.deleted == false
 
         const val TICK = "TICK"
+        const val FINISH = "FINISH"
+
+        const val TIMER_INDEX = "TIMER_INDEX"
         const val TIMER_LIST = "TIMER_LIST"
         const val TITLE = "TITLE"
-        const val DURATION = "DURATION"
+        const val REMAINING_TIME = "REMAINING_TIME"
     }
 }

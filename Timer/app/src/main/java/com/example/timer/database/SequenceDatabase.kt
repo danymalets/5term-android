@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.timer.model.Sequence
 
-@Database(entities = [Sequence::class], version = 4)
+@Database(entities = [Sequence::class], version = 5)
 abstract class SequenceDatabase: RoomDatabase() {
     abstract fun sequenceDao(): SequenceDao
 

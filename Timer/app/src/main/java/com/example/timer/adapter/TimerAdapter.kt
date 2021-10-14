@@ -1,6 +1,8 @@
 package com.example.timer.adapter
 
 import android.content.Context
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ class TimerAdapter(
     private val content: Array<Timer>
 ) : RecyclerView.Adapter<TimerAdapter.ItemViewHolder>()
 {
+    private var selectedPosition = -1
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val textTitle: TextView = view.findViewById(R.id.text_title)
@@ -21,6 +24,7 @@ class TimerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.timer_item, parent, false)
 
@@ -34,5 +38,15 @@ class TimerAdapter(
 
         holder.textTitle.text = item.title
         holder.textDuration.text = item.duration.toString()
+
+        holder.itemView.setBackgroundColor(if (selectedPosition == position) Color.LTGRAY else Color.TRANSPARENT)
+    }
+
+    fun setSelected(position: Int){
+        Log.d("RRRRRRRRRRRRR", "new selected = $position")
+        val previousSelectedPosition = selectedPosition
+        selectedPosition = position
+        notifyItemChanged(previousSelectedPosition)
+        notifyItemChanged(selectedPosition)
     }
 }

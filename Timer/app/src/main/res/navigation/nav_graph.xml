@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.timer.fragment.SettingsFragment"
+        android:name="com.example.timer.fragment.settings.SettingsFragment"
         android:label="Settings" />
     <fragment
         android:id="@+id/editSequenceFragment"

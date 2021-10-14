@@ -1,19 +1,16 @@
 package com.example.timer.fragment.timer.adapter
 
-import android.R.attr
 import android.content.*
+import android.media.MediaPlayer
 import android.os.IBinder
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.timer.R
 import com.example.timer.model.Timer
 import com.example.timer.service.TimerService
-import android.content.Context.MODE_PRIVATE
 
-import android.content.SharedPreferences
-import android.R.attr.key
 import com.example.timer.model.Sequence
-import com.google.gson.Gson
 
 
 class TimerObserver(
@@ -25,6 +22,10 @@ class TimerObserver(
     private var _title: MutableLiveData<String> = MutableLiveData(timerList[0].title)
     val title: LiveData<String>
         get() = _title
+
+    private var _timerIndex: MutableLiveData<Int> = MutableLiveData(0)
+    val timerIndex: LiveData<Int>
+        get() = _timerIndex
 
     private var _remainingTime: MutableLiveData<Int> = MutableLiveData(timerList[0].duration)
     val remainingTime: LiveData<Int>
@@ -43,6 +44,7 @@ class TimerObserver(
             val binder = service as TimerService.LocalBinder
             mService = binder.getService()
             _status.value = mService.getStatus()
+            _timerIndex.value = mService.getIndex()
             _title.value = mService.getTitle()
             _remainingTime.value = mService.getRemainingTime()
             mBound = true
@@ -57,10 +59,16 @@ class TimerObserver(
         override fun onReceive(context: Context?, intent: Intent) {
             if (intent.action == TimerService.TICK) {
                 _title.value = intent.getStringExtra(TimerService.TITLE)
-                _remainingTime.value = intent.getIntExtra(TimerService.DURATION, 0)
+                _timerIndex.value = intent.getIntExtra(TimerService.TIMER_INDEX, 0)
+                _remainingTime.value = intent.getIntExtra(TimerService.REMAINING_TIME, 0)
+            }
+            else if (intent.action == TimerService.FINISH) {
+                player.start()
             }
         }
     }
+
+    val player: MediaPlayer = MediaPlayer.create(context, R.raw.timer_sound)
 
     init{
         val intent = Intent(context, TimerService::class.java)
@@ -79,7 +87,10 @@ class TimerObserver(
     }
 
     fun register(context: Context){
-        context.registerReceiver(receiver, IntentFilter(TimerService.TICK))
+        val filter = IntentFilter()
+        filter.addAction(TimerService.TICK);
+        filter.addAction(TimerService.FINISH);
+        context.registerReceiver(receiver, filter)
     }
 
     fun unregister(context: Context){
@@ -103,12 +114,18 @@ class TimerObserver(
     fun previousTimer(){
         if (mBound){
             mService.previousTimer()
+            _title.value = mService.getTitle()
+            _timerIndex.value = mService.getIndex()
+            _remainingTime.value = mService.getRemainingTime()
         }
     }
 
     fun nextTimer(){
         if (mBound){
             mService.nextTimer()
+            _title.value = mService.getTitle()
+            _timerIndex.value = mService.getIndex()
+            _remainingTime.value = mService.getRemainingTime()
         }
     }
 

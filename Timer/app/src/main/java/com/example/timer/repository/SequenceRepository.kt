@@ -6,7 +6,7 @@ import com.example.timer.database.SequenceDao
 
 class SequenceRepository(private val timerDao: SequenceDao) {
 
-    val getAllTimers: LiveData<List<Sequence>> = timerDao.getAllSequences()
+    fun getAllTimers(): LiveData<List<Sequence>> = timerDao.getAllSequences()
 
     suspend fun addSequence(timer: Sequence){
         timerDao.addSequence(timer)
@@ -16,7 +16,11 @@ class SequenceRepository(private val timerDao: SequenceDao) {
         timerDao.updateSequence(timer)
     }
 
+    suspend fun deleteAllSequences(){
+        timerDao.deleteAllSequences()
+    }
+
     suspend fun deleteSequence(timer: Sequence){
-        timerDao.deleteSequences(timer)
+        timerDao.deleteSequence(timer)
     }
 }

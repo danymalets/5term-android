@@ -52,7 +52,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,22 +62,28 @@
         <ImageButton
             android:id="@+id/button_previous"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:background="@color/purple_500"
             android:src="@drawable/ic_baseline_skip_previous_24" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_pause"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Pause" />
+            android:layout_margin="2dp"
+            android:background="@color/purple_500"
+            android:src="@drawable/ic_baseline_play_arrow_24" />
 
         <ImageButton
             android:id="@+id/button_next"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:background="@color/purple_500"
             android:src="@drawable/ic_baseline_skip_next_24" />
     </LinearLayout>
 

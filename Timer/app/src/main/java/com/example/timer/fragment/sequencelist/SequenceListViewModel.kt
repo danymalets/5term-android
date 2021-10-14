@@ -20,7 +20,7 @@ class SequenceListViewModel(application: Application) : AndroidViewModel(applica
     init{
         val timerDao = SequenceDatabase.getDatabase(application).sequenceDao()
         sequenceRepository = SequenceRepository(timerDao)
-        allTimers = sequenceRepository.getAllTimers
+        allTimers = sequenceRepository.getAllTimers()
         Log.d("init0", (allTimers.value == null).toString())
     }
 
@@ -39,6 +39,12 @@ class SequenceListViewModel(application: Application) : AndroidViewModel(applica
     fun deleteSequence(sequence: Sequence){
         viewModelScope.launch(Dispatchers.IO){
             sequenceRepository.deleteSequence(sequence)
+        }
+    }
+
+    fun deleteAllSequence(){
+        viewModelScope.launch(Dispatchers.IO){
+            sequenceRepository.deleteAllSequences()
         }
     }
 }

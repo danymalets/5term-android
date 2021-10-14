@@ -14,11 +14,7 @@ import com.example.timer.R
 import com.example.timer.adapter.SequenceAdapter
 import com.example.timer.databinding.FragmentSequenceListBinding
 import com.example.timer.model.Sequence
-import android.util.Log
-import android.widget.Toast
-import com.example.timer.fragment.timer.adapter.KEY_SEQUENCE
 import com.example.timer.fragment.timer.adapter.PREFS_TIMER
-import com.google.gson.Gson
 
 
 class SequenceListFragment : Fragment() {
@@ -28,7 +24,7 @@ class SequenceListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val sequenceViewModel: SequenceListViewModel by activityViewModels()
+    private val sequenceListViewModel: SequenceListViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +44,7 @@ class SequenceListFragment : Fragment() {
 
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val timerAdapter = SequenceAdapter(requireContext(), sequenceViewModel)
+        val timerAdapter = SequenceAdapter(requireContext(), sequenceListViewModel)
         recyclerView.adapter = timerAdapter
 
         binding.floatingActionButton.setOnClickListener{
@@ -68,7 +64,7 @@ class SequenceListFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        sequenceViewModel.allTimers.observe(viewLifecycleOwner, { timerList ->
+        sequenceListViewModel.allTimers.observe(viewLifecycleOwner, { timerList ->
             timerAdapter.setData(timerList)
         })
 
