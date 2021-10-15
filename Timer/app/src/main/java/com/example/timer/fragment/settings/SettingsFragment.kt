@@ -36,16 +36,16 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         val button: Preference? = findPreference(getString(string.delete_all))
         button?.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             val dialogBuilder = AlertDialog.Builder(context)
-            dialogBuilder.setMessage("Do you want to delete all data?")
+            dialogBuilder.setMessage(getString(string.delete_confirmation))
                 .setCancelable(false)
-                .setPositiveButton("Yes") { _, _ ->
+                .setPositiveButton(getString(string.yes)) { _, _ ->
                     sequenceListViewModel.deleteAllSequence()
                 }
-                .setNegativeButton("No") { dialog, _ ->
+                .setNegativeButton(getString(string.no)) { dialog, _ ->
                     dialog.cancel()
                 }
             val alert = dialogBuilder.create()
-            alert.setTitle("Confirmation")
+            alert.setTitle(getString(string.confirmation))
             alert.show()
             true
         }
@@ -59,7 +59,10 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
             activity?.getString(R.string.language) ->{
                 val locale = Locale("ru")
                 Locale.setDefault(locale)
-                activity?.recreate() // dosent work
+                activity?.recreate()
+            }
+            activity?.getString(R.string.font_scale) ->{
+                activity?.recreate()
             }
         }
     }

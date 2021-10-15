@@ -13,11 +13,9 @@ import com.example.timer.model.Sequence
 import com.example.timer.fragment.sequencelist.SequenceListViewModel
 import com.google.android.material.card.MaterialCardView
 import android.app.AlertDialog
-import android.content.SharedPreferences
+import android.provider.Settings.Global.getString
+import com.example.timer.R
 import com.example.timer.fragment.sequencelist.SequenceListFragmentDirections
-import com.example.timer.fragment.timer.adapter.KEY_SEQUENCE
-import com.example.timer.fragment.timer.adapter.PREFS_TIMER
-import com.google.gson.Gson
 
 
 class SequenceAdapter(
@@ -64,18 +62,18 @@ class SequenceAdapter(
         holder.buttonDelete.setOnClickListener {
 
             val dialogBuilder = AlertDialog.Builder(context)
-            dialogBuilder.setMessage("Do you want to delete this sequence?")
+            dialogBuilder.setMessage(context.getString(R.string.delete_one_sequence))
                 .setCancelable(false)
-                .setPositiveButton("Yes") { _, _ ->
+                .setPositiveButton(context.getString(R.string.yes)) { _, _ ->
                     sequenceViewModel.deleteSequence(item)
                     notifyDataSetChanged()
-                    Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.deleted_one_successfully), Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("No") { dialog, _ ->
+                .setNegativeButton(context.getString(R.string.no)) { dialog, _ ->
                     dialog.cancel()
                 }
             val alert = dialogBuilder.create()
-            alert.setTitle("Confirmation")
+            alert.setTitle(context.getString(R.string.confirmation))
             alert.show()
         }
 

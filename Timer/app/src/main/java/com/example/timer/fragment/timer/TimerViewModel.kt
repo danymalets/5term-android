@@ -3,16 +3,15 @@ package com.example.timer.viewmodel
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.*
-import androidx.navigation.NavArgs
 import com.example.timer.model.Timer
-import com.example.timer.fragment.timer.adapter.NotificationAdapter
-import com.example.timer.fragment.timer.adapter.TimerObserver
+import com.example.timer.fragment.timer.utils.TimerNotification
+import com.example.timer.fragment.timer.utils.TimerObserver
 import com.example.timer.model.Sequence
 
 class TimerViewModel(
     application: Application,
     private val sequence: Sequence,
-    timerList: Array<Timer>,
+    private val timerList: Array<Timer>,
     firstInit: Boolean): AndroidViewModel(application) {
 
     var timerObserver: TimerObserver
@@ -20,7 +19,7 @@ class TimerViewModel(
     private val context: Context
         get() = getApplication<Application>().applicationContext
 
-    private val notificationAdapter = NotificationAdapter()
+    private val notificationAdapter = TimerNotification()
 
     init{
         timerObserver = TimerObserver(timerList, context, sequence, firstInit)
@@ -41,7 +40,7 @@ class TimerViewModel(
     }
 
     fun startNotification(){
-        notificationAdapter.startNotification(sequence, context)
+        notificationAdapter.startNotification(sequence, context, timerList.size)
     }
 
     fun deleteTimer(){

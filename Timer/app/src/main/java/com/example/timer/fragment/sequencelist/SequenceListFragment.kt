@@ -14,7 +14,7 @@ import com.example.timer.R
 import com.example.timer.adapter.SequenceAdapter
 import com.example.timer.databinding.FragmentSequenceListBinding
 import com.example.timer.model.Sequence
-import com.example.timer.fragment.timer.adapter.PREFS_TIMER
+import com.example.timer.fragment.timer.utils.PREFS_TIMER
 
 
 class SequenceListFragment : Fragment() {

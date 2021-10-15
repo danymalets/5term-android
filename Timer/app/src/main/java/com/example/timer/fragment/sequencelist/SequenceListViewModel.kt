@@ -21,7 +21,6 @@ class SequenceListViewModel(application: Application) : AndroidViewModel(applica
         val timerDao = SequenceDatabase.getDatabase(application).sequenceDao()
         sequenceRepository = SequenceRepository(timerDao)
         allTimers = sequenceRepository.getAllTimers()
-        Log.d("init0", (allTimers.value == null).toString())
     }
 
     fun addSequence(sequence: Sequence){

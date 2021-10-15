@@ -4,32 +4,50 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="settings">Найстроки</string>
     <string name="sequence_item_warm_up">Подготовка: %d с</string>
-    <string name="sequence_item_workout">Workout: %d sec</string>
-    <string name="sequence_item_rest">Rest: %d sec</string>
-    <string name="sequence_item_cycles">Cycles: %d</string>
-    <string name="sequence_item_cooldown">Cooldown: %d sec</string>
-    <string name="sequence_item_total_duration">Total duration: %d sec</string>
-    <string name="delete">Delete</string>
+    <string name="sequence_item_workout">Работа: %d с</string>
+    <string name="sequence_item_rest">Отдых: %d с</string>
+    <string name="sequence_item_cycles">Циклы: %d</string>
+    <string name="sequence_item_cooldown">Завершение: %d с</string>
+    <string name="sequence_item_total_duration">Суммарная продолжительность: %d с</string>
+    <string name="delete">Удалить</string>
 
-    <string name="warm_up">Warm-up</string>
-    <string name="workout">Workout</string>
-    <string name="rest">Rest</string>
-    <string name="cooldown">Cooldown</string>
-    <string name="pause">Pause</string>
-    <string name="run">Run</string>
+    <string name="warm_up">Подготовка</string>
+    <string name="workout">Работа</string>
+    <string name="rest">Отдых</string>
+    <string name="cooldown">Завершение</string>
+    <string name="pause">Пауза</string>
+    <string name="run">Запустить</string>
+    <string name="delete_confirmation">Вы уверены, что хотите удалить всё?</string>
+    <string name="confirmation">Подтверждение</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="all_sequence_fragment_title">Все последовательности</string>
+    <string name="timer_fragment_title">Таймер</string>
+    <string name="settings_fragment_title">Настройки</string>
+    <string name="edit_sequence_fragment_title">Редактирование</string>
+    <string name="preferences_dark_theme_title">Тёмная тема</string>
+    <string name="preferences_language_title">Язык</string>
+    <string name="preferences_font_scale_title">Маштаб шрифта</string>
+    <string name="preferences_clear_all_title">Удалить всё</string>
+    <string name="preferences_delete_all_summary">Удаление всей информации приложения</string>
+    <string name="added_successfully">Успешно добавлено!</string>
+    <string name="updated_successfully">Успешно обновлено!</string>
+    <string name="timer">Таймер</string>
+    <string name="remaining_time">Оставшееся время:</string>
+    <string name="save">Сохранить</string>
 
-    <string name="delete_all">delete_all</string>
-    <string name="language">language</string>
-    <string name="font_size">font_size</string>
-    <string name="dark_theme">dark_theme</string>
+    <string name="choose">Выбрать</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete_one_sequence">Вы уверены, что хотите удалить эту последовательность?</string>
+    <string name="deleted_one_successfully">Успешно удалено!</string>
+    <string name="not_allowed">0 и пустые строки не поддерживаются</string>
 
-    <string-array name="languageList">
-        <item>"English"</item>
-        <item>"Russian"</item>
-    </string-array>
 
-    <string-array name="languageListData">
-        <item>0</item>
-        <item>1</item>
-    </string-array>
+    <string name="title_title">Название:</string>
+    <string name="change_color">Изменить цвет</string>
+    <string name="warm_up_title">Подготовка:</string>
+    <string name="workout_title">Работа:</string>
+    <string name="rest_title">Отдых:</string>
+    <string name="cycles_title">Циклы:</string>
+    <string name="cooldown_title">Завершение:</string>
 </resources>

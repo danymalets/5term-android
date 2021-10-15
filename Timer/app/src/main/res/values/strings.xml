@@ -17,18 +17,65 @@
     <string name="pause">Pause</string>
     <string name="run">Run</string>
 
-    <string name="delete_all">delete_all</string>
-    <string name="language">language</string>
-    <string name="font_size">font_size</string>
-    <string name="dark_theme">dark_theme</string>
+    <string name="delete_all" translatable="false">delete_all</string>
+    <string name="language" translatable="false">language</string>
+    <string name="font_scale" translatable="false">font_size</string>
+    <string name="dark_theme" translatable="false">dark_theme</string>
+    <string name="delete_confirmation">Do you want to delete all data?</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="all_sequence_fragment_title">All Sequences</string>
+    <string name="timer_fragment_title">Timer</string>
+    <string name="settings_fragment_title">Settings</string>
+    <string name="edit_sequence_fragment_title">Edit Sequence</string>
+    <string name="preferences_dark_theme_title">Dark theme</string>
+    <string name="preferences_language_title">Language</string>
+    <string name="preferences_font_scale_title">Font scale</string>
+    <string name="preferences_clear_all_title">Clear all data</string>
+    <string name="preferences_delete_all_summary">Clear all data stored on the device</string>
+    <string name="added_successfully">Added successfully!</string>
+    <string name="updated_successfully">Updated successfully!</string>
+    <string name="timer">Timer</string>
+    <string name="title_title">Title:</string>
+    <string name="change_color">Change Color</string>
+    <string name="warm_up_title">Warm-up:</string>
+    <string name="workout_title">Workout:</string>
+    <string name="rest_title">Rest:</string>
+    <string name="cycles_title">Cycles:</string>
+    <string name="cooldown_title">Cooldown:</string>
+    <string name="remaining_time">Remaining time:</string>
+    <string name="save">Save</string>
+    <string name="choose">Choose</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_one_sequence">Do you want to delete this sequence?</string>
+    <string name="deleted_one_successfully">Deleted successfully!</string>
+    <string name="not_allowed">0 and empty durations allowed</string>
 
     <string-array name="languageList">
         <item>"English"</item>
-        <item>"Russian"</item>
+        <item>"Русский"</item>
     </string-array>
 
     <string-array name="languageListData">
-        <item>0</item>
-        <item>1</item>
+        <item>en</item>
+        <item>ru</item>
     </string-array>
+
+    <string-array name="fontScaleList">
+        <item>"0.5"</item>
+        <item>"0.75"</item>
+        <item>"1"</item>
+        <item>"1.25"</item>
+        <item>"1.5"</item>
+    </string-array>
+
+    <string-array name="fontScaleListData">
+        <item>"0.5"</item>
+        <item>"0.75"</item>
+        <item>"1"</item>
+        <item>"1.25"</item>
+        <item>"1.5"</item>
+    </string-array>
+
 </resources>

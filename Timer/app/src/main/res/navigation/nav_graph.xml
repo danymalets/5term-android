@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/sequenceListFragment"
         android:name="com.example.timer.fragment.sequencelist.SequenceListFragment"
-        android:label="All Sequences"
+        android:label="@string/all_sequence_fragment_title"
         tools:layout="@layout/fragment_sequence_list" >
         <action
             android:id="@+id/action_sequenceListFragment_to_timerFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.example.timer.fragment.timer.TimerFragment"
-        android:label="Timer"
+        android:label="@string/timer_fragment_title"
         tools:layout="@layout/fragment_timer" >
         <action
             android:id="@+id/action_timerFragment_to_sequenceListFragment"
@@ -37,11 +37,11 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.timer.fragment.settings.SettingsFragment"
-        android:label="Settings" />
+        android:label="@string/settings_fragment_title" />
     <fragment
         android:id="@+id/editSequenceFragment"
         android:name="com.example.timer.fragment.editsequence.EditSequenceFragment"
-        android:label="Edit Sequence" >
+        android:label="@string/edit_sequence_fragment_title" >
         <action
             android:id="@+id/action_editSequenceFragment_to_sequenceListFragment"
             app:destination="@id/sequenceListFragment" />

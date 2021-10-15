@@ -12,6 +12,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.timer.R
 import com.example.timer.databinding.FragmentEditSequenceBinding
 import com.example.timer.fragment.sequencelist.SequenceListViewModel
 import top.defaults.colorpicker.ColorPickerPopup
@@ -30,7 +31,6 @@ class EditSequenceFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("fr", "start")
         _binding = FragmentEditSequenceBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -64,8 +64,8 @@ class EditSequenceFragment : Fragment() {
             ColorPickerPopup.Builder(requireContext())
                 .initialColor(Color.WHITE)
                 .enableBrightness(false)
-                .okTitle("Choose")
-                .cancelTitle("Cancel")
+                .okTitle(getString(R.string.choose))
+                .cancelTitle(getString(R.string.cancel))
                 .showIndicator(true)
                 .showValue(false)
                 .build()
@@ -78,18 +78,31 @@ class EditSequenceFragment : Fragment() {
         }
 
         binding.buttonSave.setOnClickListener {
-            insertDataToDatabase()
+            if (binding.editTextWarmUp.text.toString() == ""
+                || binding.editTextWarmUp.text.toString() == "0"
+                || binding.editTextWorkout.text.toString() == ""
+                || binding.editTextWorkout.text.toString() == "0"
+                || binding.editTextRest.text.toString() == ""
+                || binding.editTextRest.text.toString() == "0"
+                || binding.editTextCooldown.text.toString() == ""
+                || binding.editTextCooldown.text.toString() == "0"
+            ){
+                Toast.makeText(context, getString(R.string.not_allowed), Toast.LENGTH_SHORT).show()
+            }
+            else{
+                insertDataToDatabase()
+            }
         }
     }
 
     private fun insertDataToDatabase() {
         if (editSequenceViewModel.new){
             sequenceListViewModel.addSequence(editSequenceViewModel.sequence)
-            Toast.makeText(requireContext(), "Added successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.added_successfully), Toast.LENGTH_SHORT).show()
         }
         else{
             sequenceListViewModel.updateSequence(editSequenceViewModel.sequence)
-            Toast.makeText(requireContext(), "Updated successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.updated_successfully), Toast.LENGTH_SHORT).show()
         }
         val action = EditSequenceFragmentDirections.actionEditSequenceFragmentToSequenceListFragment()
         findNavController().navigate(action)

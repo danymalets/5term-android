@@ -12,7 +12,7 @@ import com.example.timer.databinding.FragmentTimerBinding
 import com.example.timer.viewmodel.TimerViewModel
 import androidx.navigation.fragment.navArgs
 import com.example.timer.R
-import com.example.timer.fragment.timer.adapter.TimerStatus
+import com.example.timer.fragment.timer.utils.TimerStatus
 import com.example.timer.model.Sequence
 import com.example.timer.model.Timer
 import com.example.timer.viewmodel.TimerViewModelFactory

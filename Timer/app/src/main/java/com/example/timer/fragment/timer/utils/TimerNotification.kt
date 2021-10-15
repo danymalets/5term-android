@@ -1,4 +1,4 @@
-package com.example.timer.fragment.timer.adapter
+package com.example.timer.fragment.timer.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -16,7 +16,7 @@ import com.example.timer.R
 import com.example.timer.model.Sequence
 import com.example.timer.service.TimerService
 
-class NotificationAdapter {
+class TimerNotification {
     private var builder: Builder? = null
 
     private var has: Boolean = false
@@ -26,12 +26,15 @@ class NotificationAdapter {
 
     private var context: Context? = null
 
+    private var cycles = 0
+
     private val connection = object : ServiceConnection {
 
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
             val binder = service as TimerService.LocalBinder
             mService = binder.getService()
-            setNewText(context, mService.getTitle(), mService.getRemainingTime().toString())
+            setNewText(context, mService.getTitle() + " " + (mService.getIndex()+1) + "/" + cycles,
+                mService.getRemainingTime().toString())
             mBound = true
         }
 
@@ -45,12 +48,14 @@ class NotificationAdapter {
             if (intent.action == TimerService.TICK) {
                 val title = intent.getStringExtra(TimerService.TITLE)
                 val remainingTime = intent.getIntExtra(TimerService.REMAINING_TIME, 0)
-                setNewText(context, title!!, remainingTime.toString())
+                val index = intent.getIntExtra(TimerService.TIMER_INDEX, 0)
+                setNewText(context, title!! + " " + (index+1) + "/" + cycles, remainingTime.toString())
             }
         }
     }
 
-    fun startNotification(sequence: Sequence, context: Context){
+    fun startNotification(sequence: Sequence, context: Context, cycles: Int){
+        this.cycles = cycles
         this.context = context
         val intent = Intent(context, TimerService::class.java)
         context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
@@ -74,8 +79,8 @@ class NotificationAdapter {
         builder = Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_baseline_timer_24)
             .setAutoCancel(true)
-            .setContentTitle("Timer")
-            .setContentText("Wait...")
+            .setContentTitle(context.getString(R.string.timer))
+            .setContentText("")
             .setContentIntent(pendingIntent)
             .setOnlyAlertOnce(true)
             .setOngoing(true)
@@ -96,7 +101,7 @@ class NotificationAdapter {
     fun setNewText(context: Context?, title: String, text: String){
         if (context != null && builder != null && has) {
             builder!!.setContentTitle(title)
-            builder!!.setContentText("Remaining time: $text")
+            builder!!.setContentText(context.getString(R.string.remaining_time) + " " + text)
             with(NotificationManagerCompat.from(context)) {
                 notify(NOTIFICATION_ID, builder!!.build())
             }

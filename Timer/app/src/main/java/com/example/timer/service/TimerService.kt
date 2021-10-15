@@ -6,7 +6,7 @@ import android.os.Binder
 import android.os.CountDownTimer
 import android.os.IBinder
 import android.util.Log
-import com.example.timer.fragment.timer.adapter.TimerStatus
+import com.example.timer.fragment.timer.utils.TimerStatus
 import com.example.timer.model.Timer
 
 
